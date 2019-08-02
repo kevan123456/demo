@@ -3,8 +3,6 @@ package com.ws;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import static org.junit.Assert.assertTrue;
@@ -100,6 +98,7 @@ public class AppTest
         item5.setMark(0);
         itemList.add(item5);
 
+        /*
         Collections.sort(itemList, new Comparator<Item>() {
             @Override
             public int compare(Item o1, Item o2) {
@@ -111,6 +110,16 @@ public class AppTest
                 }
                 return 0;
             }
+        });
+        */
+        itemList.sort((Item o1, Item o2) -> {
+            if (o1.getMark() != null && o1.getMark() == 1) {
+                return 1;
+            }
+            if (o2.getMark() != null && o2.getMark() == 1) {
+                return -1;
+            }
+            return 0;
         });
 
         for (Item item : itemList) {
